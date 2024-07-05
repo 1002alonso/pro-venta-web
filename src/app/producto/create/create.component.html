@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Crear Producto</h1>
+  
+    <a href="#" routerLink="/producto/index" class="btn btn-primary">Inicio</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="cveProducto">Clave del producto:</label>
+            <input 
+                formControlName="cveProducto"
+                id="cveProducto" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['cveProducto'].touched && f['cveProducto'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cveProducto'].errors && f['cveProducto'].errors['required']">Clave del producto requerido.</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="nomProducto">Nombre del producto</label>
+            <textarea 
+                formControlName="nomProducto"
+                id="nomProducto" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['nomProducto'].touched && f['nomProducto'].invalid" class="alert alert-danger">
+                <div *ngIf="f['nomProducto'].errors && f['nomProducto'].errors['required']">Nombre del producto  es requerido.</div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Enviar</button>
+    </form>
+</div>
